@@ -1,12 +1,14 @@
 #!/bin/sh
 
 if command -v nvim >/dev/null; then
-    nvim $@
+    nvim "$@"
 elif command -v vim >/dev/null; then
-    vim $@
+    vim "$@"
+elif command -v vi >/dev/null; then
+    vi "$@"
 else
     if command -v cpm >/dev/null; then
-        cpm i neovim && nvim $@
+        cpm i neovim && nvim "$@"
     else
         >&2 echo "you're system is broke"
         exit 1
