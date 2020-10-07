@@ -6,11 +6,9 @@ elif command -v vim >/dev/null; then
     vim "$@"
 elif command -v vi >/dev/null; then
     vi "$@"
+elif command -v cpm >/dev/null; then
+    cpm i neovim && nvim "$@"
 else
-    if command -v cpm >/dev/null; then
-        cpm i neovim && nvim "$@"
-    else
-        >&2 echo "you're system is broke"
-        exit 1
-    fi
+    >&2 echo "you're system is broke"
+    exit 1
 fi
